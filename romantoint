@@ -1,0 +1,36 @@
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var romanToInt = function(s) {
+    var result = 0;
+    var k = 0;
+    var length = s.length;
+    var newarray = [];
+    for (i=0;i<length;i++){
+        if (s[i] == 'I'){
+            newarray[i] = 1;          
+        }else if(s[i] == 'X'){
+            newarray[i] = 10;
+        }else if(s[i] == 'V'){
+            newarray[i] = 5;
+        }else if(s[i] == 'L'){
+            newarray[i] = 50;
+        }else if(s[i] == 'C' ){
+            newarray[i] = 100;
+        }else if(s[i] == 'D'){
+            newarray[i] = 500;
+        }else{
+            newarray[i] = 1000;
+        }
+    }
+     for (k=0;k<length;k++){
+        if(newarray[k] < newarray[k+1]){
+            result = result + newarray[k+1] - newarray[k];
+            k += 1;
+        }else{
+            result += newarray[k];
+        }
+     } 
+    return result;
+};
